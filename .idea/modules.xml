@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Priority.iml" filepath="$PROJECT_DIR$/.idea/modules/Priority.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Priority_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Priority_main.iml" group="Priority" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Priority_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Priority_test.iml" group="Priority" />
+    </modules>
+  </component>
+</project>
