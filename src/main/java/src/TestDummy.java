@@ -1,4 +1,4 @@
-package interfaces;
+package src;
 
 public class TestDummy implements Comparable<TestDummy> {
     private int priority;

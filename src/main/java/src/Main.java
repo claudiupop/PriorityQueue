@@ -1,4 +1,4 @@
-import interfaces.TestDummy;
+package src;
 
 import java.util.List;
 
