@@ -33,10 +33,9 @@ public class TestDummy implements Comparable<TestDummy> {
 
     @Override
     public int compareTo(TestDummy o) {
-        if(id == o.getId()){
+        if (id == o.getId()) {
             return 0;
-        }
-        else if(priority > o.getPriority()){
+        } else if (priority > o.getPriority()) {
             return -1;
         }
         return 1;
