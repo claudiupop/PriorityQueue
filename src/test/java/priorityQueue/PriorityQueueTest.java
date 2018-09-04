@@ -146,6 +146,16 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(1, 1));
                 queue.add(new TestDummy(3, 5));
                 queue.add(new TestDummy(2, 6));
+                queue.add(new TestDummy(6, 10));
+                queue.add(new TestDummy(5,11));
+                queue.add(new TestDummy(9,12));
+                queue.add(new TestDummy(3,13));
+                queue.add(new TestDummy(2,14));
+                queue.add(new TestDummy(1,15));
+                queue.add(new TestDummy(3,16));
+                queue.add(new TestDummy(1,17));
+                queue.add(new TestDummy(4,18));
+                queue.add(new TestDummy(1,19));
             }
         };
         Thread t2 = new Thread() {
@@ -155,6 +165,16 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(3, 3));
                 queue.add(new TestDummy(2, 4));
                 queue.add(new TestDummy(4, 8));
+                queue.add(new TestDummy(13,20));
+                queue.add(new TestDummy(12,21));
+                queue.add(new TestDummy(11,22));
+                queue.add(new TestDummy(10,23));
+                queue.add(new TestDummy(15,24));
+                queue.add(new TestDummy(14,25));
+                queue.add(new TestDummy(13,26));
+                queue.add(new TestDummy(12,27));
+                queue.add(new TestDummy(11,28));
+                queue.add(new TestDummy(10,29));
             }
         };
         Thread t3 = new Thread() {
@@ -164,6 +184,16 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(4, 9));
                 queue.add(new TestDummy(1, 2));
                 queue.add(new TestDummy(3, 7));
+                queue.add(new TestDummy(15,30));
+                queue.add(new TestDummy(16,31));
+                queue.add(new TestDummy(17,32));
+                queue.add(new TestDummy(18,33));
+                queue.add(new TestDummy(19,34));
+                queue.add(new TestDummy(20,35));
+                queue.add(new TestDummy(15,36));
+                queue.add(new TestDummy(16,37));
+                queue.add(new TestDummy(17,38));
+                queue.add(new TestDummy(18,39));
             }
         };
 
@@ -175,8 +205,8 @@ public class PriorityQueueTest {
             t1.join();
             t2.join();
             t3.join();
-            Assertions.assertEquals(9, queue.getItems().size(), "Expected queue size");
-            Assertions.assertEquals(4, queue.pop().getPriority(), "Expected item with most priority");
+            Assertions.assertEquals(39, queue.getItems().size(), "Expected queue size");
+            Assertions.assertEquals(20, queue.pop().getPriority(), "Expected item with most priority");
         } catch (InterruptedException e) {
             assert (false);
         }
@@ -197,6 +227,18 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(4, 6));
                 queue.add(new TestDummy(3, 2));
                 queue.add(new TestDummy(1, 7));
+                queue.add(new TestDummy(5,11));
+                queue.add(new TestDummy(9,12));
+                queue.add(new TestDummy(3,13));
+                queue.add(new TestDummy(2,14));
+                queue.add(new TestDummy(1,15));
+                td = queue.getItems().get(0);
+                td.setPriority(1);
+                queue.update(td);
+                queue.add(new TestDummy(3,16));
+                queue.add(new TestDummy(1,17));
+                queue.add(new TestDummy(4,18));
+                queue.add(new TestDummy(1,19));
             }
         };
         Thread t2 = new Thread() {
@@ -207,7 +249,23 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(2, 4));
                 queue.add(new TestDummy(4, 8));
                 queue.add(new TestDummy(3, 9));
+                TestDummy td = queue.getItems().get(4);
+                td.setPriority(9);
+                queue.update(td);
                 queue.add(new TestDummy(1, 10));
+                queue.add(new TestDummy(12,21));
+                queue.add(new TestDummy(11,22));
+                queue.add(new TestDummy(10,23));
+                queue.add(new TestDummy(15,24));
+                queue.add(new TestDummy(14,25));
+                queue.add(new TestDummy(13,26));
+                queue.add(new TestDummy(12,27));
+                queue.add(new TestDummy(11,28));
+                queue.add(new TestDummy(10,29));
+                td = queue.getItems().get(13);
+                td.setPriority(42);
+                queue.update(td);
+                queue.add(new TestDummy(15,30));
             }
         };
 
@@ -217,8 +275,8 @@ public class PriorityQueueTest {
         try {
             t1.join();
             t2.join();
-            Assertions.assertEquals(10, queue.getItems().size(), "Expected queue size");
-            Assertions.assertEquals(7, queue.pop().getPriority(), "Expected item with most priority");
+            Assertions.assertEquals(29, queue.getItems().size(), "Expected queue size");
+            Assertions.assertEquals(42, queue.pop().getPriority(), "Expected item with most priority");
         } catch (InterruptedException e) {
             assert (false);
         }
@@ -227,27 +285,100 @@ public class PriorityQueueTest {
     @Test
     void test_PopOnThreads() {
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
+
+        queue.add(new TestDummy(1, 1));
+        queue.add(new TestDummy(3, 5));
+        queue.add(new TestDummy(7, 6));
+        queue.add(new TestDummy(6, 2));
+        queue.add(new TestDummy(0, 7));
+        queue.add(new TestDummy(3, 3));
+        queue.add(new TestDummy(5, 4));
+        queue.add(new TestDummy(4, 8));
+        queue.add(new TestDummy(3, 9));
+        queue.add(new TestDummy(6, 10));
+        queue.add(new TestDummy(5,11));
+        queue.add(new TestDummy(9,12));
+        queue.add(new TestDummy(3,13));
+        queue.add(new TestDummy(2,14));
+        queue.add(new TestDummy(1,15));
+        queue.add(new TestDummy(3,16));
+        queue.add(new TestDummy(1,17));
+        queue.add(new TestDummy(4,18));
+        queue.add(new TestDummy(1,19));
+        queue.add(new TestDummy(13,20));
+        queue.add(new TestDummy(12,21));
+        queue.add(new TestDummy(11,22));
+        queue.add(new TestDummy(10,23));
+        queue.add(new TestDummy(15,24));
+        queue.add(new TestDummy(14,25));
+        queue.add(new TestDummy(13,26));
+        queue.add(new TestDummy(12,27));
+        queue.add(new TestDummy(11,28));
+        queue.add(new TestDummy(10,29));
+        queue.add(new TestDummy(15,30));
+        queue.add(new TestDummy(16,31));
+        queue.add(new TestDummy(17,32));
+        queue.add(new TestDummy(18,33));
+        queue.add(new TestDummy(19,34));
+        queue.add(new TestDummy(20,35));
+        queue.add(new TestDummy(15,36));
+        queue.add(new TestDummy(16,37));
+        queue.add(new TestDummy(17,38));
+        queue.add(new TestDummy(18,39));
+        queue.add(new TestDummy(19,40));
+        queue.add(new TestDummy(20,41));
+
+        Assertions.assertEquals(41,queue.getItems().size());
         Thread t1 = new Thread() {
             PriorityQueue<TestDummy> q = queue;
 
             public void run() {
-                queue.add(new TestDummy(1, 1));
-                queue.add(new TestDummy(3, 5));
-                queue.add(new TestDummy(7, 6));
                 queue.pop();
-                queue.add(new TestDummy(6, 2));
-                queue.add(new TestDummy(1, 7));
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
             }
         };
         Thread t2 = new Thread() {
             PriorityQueue<TestDummy> q = queue;
 
             public void run() {
-                queue.add(new TestDummy(3, 3));
-                queue.add(new TestDummy(5, 4));
-                queue.add(new TestDummy(4, 8));
-                queue.add(new TestDummy(3, 9));
-                queue.add(new TestDummy(6, 10));
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
+                queue.pop();
             }
         };
 
@@ -257,8 +388,8 @@ public class PriorityQueueTest {
         try {
             t1.join();
             t2.join();
-            Assertions.assertEquals(9, queue.getItems().size(), "Expected queue size");
-            Assertions.assertEquals(6, queue.pop().getPriority(), "Expected item with most priority");
+            Assertions.assertEquals(1, queue.getItems().size(), "Expected queue size");
+            Assertions.assertEquals(0, queue.pop().getPriority(), "Expected item with most priority");
         } catch (InterruptedException e) {
             assert (false);
         }
