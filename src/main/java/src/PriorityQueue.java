@@ -77,16 +77,12 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
             }
         }
 
-        if(index == -1){//if the item is not found return;
-            return;
+        if(index != -1){//if the item is found remove it and then add it again so the order is maintained
+            items.set(index,items.get(items.size()-1));//move the last node to the index
+            items.remove(items.size()-1);//remove it from the end
+            shiftDown(index);//shift it down to its position;
+            add(item);//add the item back;
         }
-
-        //to update the node remove it and then add it again so the order is maintained
-        items.set(index,items.get(items.size()-1));//move the last node to the index
-        items.remove(items.size()-1);//remove it from the end
-        shiftDown(index);//shift it down to its position;
-        add(item);//add the item back;
-
     }
 
     /*
