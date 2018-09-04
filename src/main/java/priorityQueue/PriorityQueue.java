@@ -15,7 +15,7 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
     private boolean maxPriorityQueue;
 
     public PriorityQueue(boolean isMaxPriorityQueue) {
-        items = new Vector<T>();
+        items = new Vector<T>(40,20);
         maxPriorityQueue = isMaxPriorityQueue;
     }
 
@@ -36,7 +36,17 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
 
     /**
      * Add a new item to the heap list
-     * Complexity: O(log2(n)) because of the shiftUp method from the binary heap
+     * Complexity: shiftUp has a complexity of O(log2(n))
+     *             but the overall complexity of add is higher because of the
+     *             vector add method.
+     *             The vector add method increses it's size when it get's full
+     *             Initial behavior is to double it's size, which is a tradeoff
+     *             between size and time complexity. With this behavior the
+     *             complexity is O(n). In this implementation the capacity of
+     *             the vector is incresed with 20 elements when it gets full
+     *             to avoid unused space. This behavior makes the method to
+     *             have a complexity of O(k^2).
+     *
      * Returns: -
      */
     @Override
