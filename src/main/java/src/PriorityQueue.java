@@ -48,15 +48,18 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
     /**
      * Get the item with the most priority
      * Complexity: O(log2(n))because of the shiftDown method from the binary heap
-     * Returns: the item with the most priority
+     * Returns: the item with the most priority or null if queue is empty
     */
     @Override
     public synchronized T pop() {
-        T item = items.get(0);//get the first item;
-        items.set(0,items.get(items.size()-1));//get the last item and put it on the first place
-        items.remove(items.size()-1);
-        shiftDown(0);//shift it down to its position
-        return item;//return the item with the most priority
+        if(items.size() != 0){
+            T item = items.get(0);//get the first item;
+            items.set(0,items.get(items.size()-1));//get the last item and put it on the first place
+            items.remove(items.size()-1);
+            shiftDown(0);//shift it down to its position
+            return item;//return the item with the most priority
+        }
+        return null;
     }
 
     /**
