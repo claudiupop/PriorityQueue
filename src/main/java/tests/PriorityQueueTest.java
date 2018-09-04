@@ -11,20 +11,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PriorityQueueTest {
     @Test
-    public void test_empty(){
+    public void test_queue_empty(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         assert(queue.getItems().size() == 0);
     }
 
     @Test
-    public void test_AddItem_1(){
+    public void test_AddItem(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(1,1));
         assert(queue.getItems().size() == 1);
     }
 
     @Test
-    void test_AddItem_2(){
+    void test_AddCorrectItem(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(1,1));
         TestDummy td = queue.getItems().get(0);
@@ -33,7 +33,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_AddItem_3(){
+    void test_AddMultipleItems(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(1,1));
         queue.add(new TestDummy(3,2));
@@ -42,7 +42,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_getItems(){
+    void test_getQueueItems(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         assert(queue.getItems().size() == 0);
         queue.add(new TestDummy(1,1));
@@ -52,7 +52,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_popItem_1(){
+    void test_popItem(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(1,1));
         queue.add(new TestDummy(2,2));
@@ -66,23 +66,33 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_popItem_2(){
+    void test_popMultipleItems(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(3,1));
         queue.add(new TestDummy(2,2));
         queue.add(new TestDummy(1,3));
 
-        TestDummy td = queue.pop();
-
         List<TestDummy> list = queue.getItems();
+
+        TestDummy td = queue.pop();
         assert(list.size() == 2);
-        assert(list.get(0).getId() == 2);
-        assert(list.get(1).getId() == 3);
         assertEquals(1,td.getId(),"id not expected");
+
+        td = queue.pop();
+        assert(list.size() == 1);
+        assertEquals(2,td.getId(),"id not expected");
     }
 
     @Test
-    void test_updateItem_1(){
+    void test_popEmptyQueue(){
+        PriorityQueue<TestDummy> queue = new PriorityQueue<>();
+        TestDummy td = queue.pop();
+
+        assertEquals(null,td,"Expected null");
+    }
+
+    @Test
+    void test_updateIncresePriority(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(3,1));
         queue.add(new TestDummy(2,2));
@@ -99,7 +109,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_updateItem_2(){
+    void test_updateDecreasePriority(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(3,1));
         queue.add(new TestDummy(2,2));
@@ -116,7 +126,21 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_thread_add_(){
+    void test_updateInexistent(){
+        PriorityQueue<TestDummy> queue = new PriorityQueue<>();
+        queue.add(new TestDummy(3,1));
+        queue.add(new TestDummy(2,2));
+        queue.add(new TestDummy(1,3));
+
+        TestDummy td = new TestDummy(6,6);
+        assert(queue.getItems().size() == 3);
+        for(TestDummy testDummy : queue.getItems()){
+            assert(testDummy.getPriority() != 6 && testDummy.getId() != 6);
+        }
+    }
+
+    @Test
+    void test_AddOnThreads(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         Thread t1 = new Thread(){
             PriorityQueue<TestDummy> q = queue;
@@ -159,7 +183,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_thread_update(){
+    void test_updateOnThreads(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         Thread t1 = new Thread(){
             PriorityQueue<TestDummy> q = queue;
@@ -199,7 +223,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_thread_pop(){
+    void test_PopOnThreads(){
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         Thread t1 = new Thread(){
             PriorityQueue<TestDummy> q = queue;
