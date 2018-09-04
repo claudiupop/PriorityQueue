@@ -1,4 +1,4 @@
-package src;
+package priorityQueue;
 
 import interfaces.IPriorityQueue;
 

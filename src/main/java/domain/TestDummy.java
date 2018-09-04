@@ -1,4 +1,4 @@
-package src;
+package domain;
 
 public class TestDummy implements Comparable<TestDummy> {
     private int priority;

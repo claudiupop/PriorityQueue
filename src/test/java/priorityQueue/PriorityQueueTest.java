@@ -1,9 +1,8 @@
-package tests;
+package priorityQueue;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import src.PriorityQueue;
-import src.TestDummy;
-
+import domain.TestDummy;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -62,7 +61,7 @@ public class PriorityQueueTest {
         List<TestDummy> list = queue.getItems();
         assert(list.get(0).getId() == 2);
         assert(list.get(1).getId() == 1);
-        assertEquals(3,td.getId(),"Expected different id");
+        Assertions.assertEquals(3,td.getId(),"Expected different id");
     }
 
     @Test
@@ -76,11 +75,11 @@ public class PriorityQueueTest {
 
         TestDummy td = queue.pop();
         assert(list.size() == 2);
-        assertEquals(1,td.getId(),"id not expected");
+        Assertions.assertEquals(1,td.getId(),"id not expected");
 
         td = queue.pop();
         assert(list.size() == 1);
-        assertEquals(2,td.getId(),"id not expected");
+        Assertions.assertEquals(2,td.getId(),"id not expected");
     }
 
     @Test
@@ -88,7 +87,7 @@ public class PriorityQueueTest {
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         TestDummy td = queue.pop();
 
-        assertEquals(null,td,"Expected null");
+        Assertions.assertEquals(null,td,"Expected null");
     }
 
     @Test
@@ -100,12 +99,12 @@ public class PriorityQueueTest {
 
         List<TestDummy> list = queue.getItems();
         TestDummy td = list.get(2);
-        assertEquals(3,td.getId(),"Exepected least priority id");
+        Assertions.assertEquals(3,td.getId(),"Exepected least priority id");
         td.setPriority(5);
         queue.update(td);
         td = queue.pop();
-        assertEquals(3,td.getId(),"Expected most priority id");
-        assertEquals(5,td.getPriority(),"Expected Priority");
+        Assertions.assertEquals(3,td.getId(),"Expected most priority id");
+        Assertions.assertEquals(5,td.getPriority(),"Expected Priority");
     }
 
     @Test
@@ -117,12 +116,12 @@ public class PriorityQueueTest {
 
         List<TestDummy> list = queue.getItems();
         TestDummy td = list.get(0);
-        assertEquals(1,td.getId(),"Exepected most priority id");
+        Assertions.assertEquals(1,td.getId(),"Exepected most priority id");
         td.setPriority(1);
         queue.update(td);
         td = queue.pop();
-        assertEquals(2,td.getId(),"Expected most priority id");
-        assertEquals(2,td.getPriority(),"Expected Priority");
+        Assertions.assertEquals(2,td.getId(),"Expected most priority id");
+        Assertions.assertEquals(2,td.getPriority(),"Expected Priority");
     }
 
     @Test
@@ -175,8 +174,8 @@ public class PriorityQueueTest {
             t1.join();
             t2.join();
             t3.join();
-            assertEquals(9,queue.getItems().size(),"Expected queue size");
-            assertEquals(4,queue.pop().getPriority(),"Expected item with most priority");
+            Assertions.assertEquals(9,queue.getItems().size(),"Expected queue size");
+            Assertions.assertEquals(4,queue.pop().getPriority(),"Expected item with most priority");
         } catch (InterruptedException e) {
             assert(false);
         }
@@ -215,8 +214,8 @@ public class PriorityQueueTest {
         try {
             t1.join();
             t2.join();
-            assertEquals(10,queue.getItems().size(),"Expected queue size");
-            assertEquals(7,queue.pop().getPriority(),"Expected item with most priority");
+            Assertions.assertEquals(10,queue.getItems().size(),"Expected queue size");
+            Assertions.assertEquals(7,queue.pop().getPriority(),"Expected item with most priority");
         } catch (InterruptedException e) {
             assert(false);
         }
@@ -253,8 +252,8 @@ public class PriorityQueueTest {
         try {
             t1.join();
             t2.join();
-            assertEquals(9,queue.getItems().size(),"Expected queue size");
-            assertEquals(6,queue.pop().getPriority(),"Expected item with most priority");
+            Assertions.assertEquals(9,queue.getItems().size(),"Expected queue size");
+            Assertions.assertEquals(6,queue.pop().getPriority(),"Expected item with most priority");
         } catch (InterruptedException e) {
             assert(false);
         }
