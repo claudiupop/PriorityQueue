@@ -5,10 +5,10 @@ import interfaces.IPriorityQueue;
 import java.util.List;
 import java.util.Vector;
 
-/*
-   The priority queue implementation is based on a binary heap
-   The space complexity is O(n) for all of the methods
-   All the public methods are syncronized so this ensures the thread-safe condition
+/**
+ * The priority queue implementation is based on a binary heap
+ * The space complexity is O(n) for all of the methods
+ * All the public methods are syncronized so this ensures the thread-safe condition
  */
 public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
     private List<T> items;
@@ -24,20 +24,20 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
         maxPriorityQueue = true;
     }
 
-    /*
-        Return a list of items
-        Complexty: T(1)
-        returns: a list of items (not sorted)
+    /**
+     * Get the list of items contained by the queue
+     * Complexty: T(1)
+     * returns: a list of items (not sorted)
     */
     @Override
     public synchronized List<T> getItems(){
         return items;
     }
 
-    /*
-        Add a new item to the heap list
-        Complexity: O(log2(n)) because of the shiftUp method from the binary heap
-        Returns: -
+    /**
+     * Add a new item to the heap list
+     * Complexity: O(log2(n)) because of the shiftUp method from the binary heap
+     * Returns: -
     */
     @Override
     public synchronized void add(T item) {
@@ -45,10 +45,10 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
         shiftUp(items.size()-1);//shift it up to keep it in order
     }
 
-    /*
-        Get the item with the most priority
-        Complexity: O(log2(n))because of the shiftDown method from the binary heap
-        Returns: the item with the most priority
+    /**
+     * Get the item with the most priority
+     * Complexity: O(log2(n))because of the shiftDown method from the binary heap
+     * Returns: the item with the most priority
     */
     @Override
     public synchronized T pop() {
@@ -59,12 +59,12 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
         return item;//return the item with the most priority
     }
 
-    /*
-         mainly because the heap doesn't keep the items ordered
-        so we need to do a sequencial search. This could be optimised if we find a way to keep
-        a list of indexes ordered, so we can do a binary search.
-        Complexity: O(n)
-
+    /**
+     * Update an item from the queue
+     * Complexity: O(n) mainly because the heap doesn't keep the items ordered
+     * so we need to do a sequencial search. This could be optimised if we find a way to keep
+     * a list of indexes ordered, so we can do a binary search.
+     * @param item The item to be updated
     */
     @Override
     public synchronized void update(T item) {
@@ -85,8 +85,10 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
         }
     }
 
-    /*
-        shift up the item from position "position" to maintain the heap form
+    /**
+     * Shift up the item from give position to maintain the heap form
+     * @param position position of item to be shifted up
+     *
      */
     private void shiftUp(Integer position){
         int parentPos = (position-1)/2;
@@ -99,9 +101,10 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T>{
         }
     }
 
-    /*
-        shift down the item from position "position" to maintain the heap form
-    */
+    /**
+     * Shift down the item from position "position" to maintain the heap form
+     * @param position position of item to be shifted up
+     */
     private void shiftDown(Integer position){
         int leftChildIndex = 2*position+1;
         int rightChildIndex = 2*position+2;
