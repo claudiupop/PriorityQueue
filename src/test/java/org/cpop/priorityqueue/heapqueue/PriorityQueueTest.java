@@ -283,6 +283,13 @@ public class PriorityQueueTest {
             t2.join();
             Assertions.assertEquals(29, queue.getItems().size(), "Expected heapqueue size");
             Assertions.assertEquals(42, queue.pop().getPriority(), "Expected item with most priority");
+
+            Integer[] priolist = {1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 7, 9, 10, 11, 11, 12, 12, 13, 14, 15, 15};
+            for(int i=27;i>=0;i--) {
+                TestDummy td = queue.pop();
+                Assertions.assertEquals(priolist[i].intValue(), td.getPriority(), "Priority not expected");
+            }
+
         } catch (InterruptedException e) {
             assert (false);
         }
