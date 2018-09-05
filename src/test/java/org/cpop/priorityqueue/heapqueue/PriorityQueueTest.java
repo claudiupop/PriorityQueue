@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.cpop.priorityqueue.domain.TestDummy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PriorityQueueTest {
@@ -208,6 +210,13 @@ public class PriorityQueueTest {
             t3.join();
             Assertions.assertEquals(39, queue.getItems().size(), "Expected heapqueue size");
             Assertions.assertEquals(20, queue.pop().getPriority(), "Expected item with most priority");
+
+            Integer[] priolist = {1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 5, 6, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 15, 15, 15, 16, 16, 17, 17, 18, 18, 19};
+            List<Integer> priorityList = new ArrayList<>(Arrays.asList(priolist));
+            for(int i=37;i>=0;i--){
+                TestDummy td = queue.pop();
+                Assertions.assertEquals(priolist[i].intValue(),td.getPriority(), "Priority not expected");
+            }
         } catch (InterruptedException e) {
             assert (false);
         }
