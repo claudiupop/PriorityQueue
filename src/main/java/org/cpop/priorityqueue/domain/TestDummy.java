@@ -1,4 +1,4 @@
-package domain;
+package org.cpop.priorityqueue.domain;
 
 public class TestDummy implements Comparable<TestDummy> {
     private int priority;

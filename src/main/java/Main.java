@@ -1,6 +1,6 @@
-package priorityQueue;
+package org.cpop.priorityqueue.heapqueue;
 
-import domain.TestDummy;
+import org.cpop.priorityqueue.domain.TestDummy;
 
 import java.util.List;
 

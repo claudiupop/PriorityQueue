@@ -1,12 +1,12 @@
-package priorityQueue;
+package org.cpop.priorityqueue.heapqueue;
 
-import interfaces.IPriorityQueue;
+import org.cpop.priorityqueue.interfaces.IPriorityQueue;
 
 import java.util.List;
 import java.util.Vector;
 
 /**
- * The priority queue implementation is based on a binary heap
+ * The priority heapqueue implementation is based on a binary heap
  * The space complexity is O(n) for all of the methods
  * All the public methods are syncronized so this ensures the thread-safe condition
  */
@@ -25,7 +25,7 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
     }
 
     /**
-     * Get the list of items contained by the queue
+     * Get the list of items contained by the heapqueue
      * Complexty: T(1)
      * returns: a list of items (not sorted)
      */
@@ -58,7 +58,7 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
     /**
      * Get the item with the most priority
      * Complexity: O(log2(n))because of the shiftDown method from the binary heap
-     * Returns: the item with the most priority or null if queue is empty
+     * Returns: the item with the most priority or null if heapqueue is empty
      */
     @Override
     public synchronized T pop() {
@@ -73,7 +73,7 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
     }
 
     /**
-     * Update an item from the queue
+     * Update an item from the heapqueue
      * Complexity: O(n) mainly because the heap doesn't keep the items ordered
      * so we need to do a sequencial search. This could be optimised if we find a way to keep
      * a list of indexes ordered, so we can do a binary search.

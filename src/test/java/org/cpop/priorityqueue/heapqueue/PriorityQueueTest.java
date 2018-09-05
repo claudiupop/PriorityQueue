@@ -1,8 +1,8 @@
-package priorityQueue;
+package org.cpop.priorityqueue.heapqueue;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import domain.TestDummy;
+import org.cpop.priorityqueue.domain.TestDummy;
 
 import java.util.List;
 
@@ -205,7 +205,7 @@ public class PriorityQueueTest {
             t1.join();
             t2.join();
             t3.join();
-            Assertions.assertEquals(39, queue.getItems().size(), "Expected queue size");
+            Assertions.assertEquals(39, queue.getItems().size(), "Expected heapqueue size");
             Assertions.assertEquals(20, queue.pop().getPriority(), "Expected item with most priority");
         } catch (InterruptedException e) {
             assert (false);
@@ -275,7 +275,7 @@ public class PriorityQueueTest {
         try {
             t1.join();
             t2.join();
-            Assertions.assertEquals(29, queue.getItems().size(), "Expected queue size");
+            Assertions.assertEquals(29, queue.getItems().size(), "Expected heapqueue size");
             Assertions.assertEquals(42, queue.pop().getPriority(), "Expected item with most priority");
         } catch (InterruptedException e) {
             assert (false);
@@ -388,7 +388,7 @@ public class PriorityQueueTest {
         try {
             t1.join();
             t2.join();
-            Assertions.assertEquals(1, queue.getItems().size(), "Expected queue size");
+            Assertions.assertEquals(1, queue.getItems().size(), "Expected heapqueue size");
             Assertions.assertEquals(0, queue.pop().getPriority(), "Expected item with most priority");
         } catch (InterruptedException e) {
             assert (false);

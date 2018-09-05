@@ -1,4 +1,4 @@
-package interfaces;
+package org.cpop.priorityqueue.interfaces;
 
 import java.util.List;
 
