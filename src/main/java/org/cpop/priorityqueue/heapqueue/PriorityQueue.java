@@ -62,7 +62,7 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
      */
     @Override
     public synchronized T pop() {
-        if (items.size() != 0) {
+        if (!items.isEmpty()) {
             T item = items.get(0);//get the first item;
             items.set(0, items.get(items.size() - 1));//get the last item and put it on the first place
             items.remove(items.size() - 1);
