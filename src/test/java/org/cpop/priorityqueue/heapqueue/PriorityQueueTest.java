@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PriorityQueueTest {
     @Test
-    public void test_queue_empty() {
+    public void queueIsEmpty() {
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         assert (queue.getItems().size() == 0);
     }
@@ -46,6 +46,7 @@ public class PriorityQueueTest {
         assert (queue.getItems().size() == 1);
         queue.add(new TestDummy(2, 2));
         assert (queue.getItems().size() == 2);
+
     }
 
     @Test
@@ -81,7 +82,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_popEmptyQueue() {
+    void popShouldReturnNullWhenQueueIsEmpty() {
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         TestDummy td = queue.pop();
 
@@ -89,7 +90,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_updateIncresePriority() {
+    void updateIncresePriorityShouldGetItemInFrontOfQueue() {
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(3, 1));
         queue.add(new TestDummy(2, 2));
@@ -106,7 +107,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_updateDecreasePriority() {
+    void updateDecreasePriorityShouldGetItemBackInQueue() {
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(3, 1));
         queue.add(new TestDummy(2, 2));
@@ -123,7 +124,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    void test_updateInexistent() {
+    void updateInexistentItemShouldKeepQueueUnmodified() {
         PriorityQueue<TestDummy> queue = new PriorityQueue<>();
         queue.add(new TestDummy(3, 1));
         queue.add(new TestDummy(2, 2));
