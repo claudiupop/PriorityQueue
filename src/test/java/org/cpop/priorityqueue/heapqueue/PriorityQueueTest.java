@@ -222,8 +222,7 @@ public class PriorityQueueTest {
             public void run() {
                 queue.add(new TestDummy(1, 1));
                 queue.add(new TestDummy(3, 5));
-                TestDummy td = queue.getItems().get(1);
-                td.setPriority(7);
+                TestDummy td = new TestDummy(7,5);
                 queue.update(td);
                 queue.add(new TestDummy(4, 6));
                 queue.add(new TestDummy(3, 2));
@@ -233,8 +232,7 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(3,13));
                 queue.add(new TestDummy(2,14));
                 queue.add(new TestDummy(1,15));
-                td = queue.getItems().get(0);
-                td.setPriority(1);
+                td = new TestDummy(1,12);
                 queue.update(td);
                 queue.add(new TestDummy(3,16));
                 queue.add(new TestDummy(1,17));
@@ -250,8 +248,7 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(2, 4));
                 queue.add(new TestDummy(4, 8));
                 queue.add(new TestDummy(3, 9));
-                TestDummy td = queue.getItems().get(4);
-                td.setPriority(9);
+                TestDummy td = new TestDummy(9,9);
                 queue.update(td);
                 queue.add(new TestDummy(1, 10));
                 queue.add(new TestDummy(12,21));
@@ -263,8 +260,7 @@ public class PriorityQueueTest {
                 queue.add(new TestDummy(12,27));
                 queue.add(new TestDummy(11,28));
                 queue.add(new TestDummy(10,29));
-                td = queue.getItems().get(13);
-                td.setPriority(42);
+                td = new TestDummy(42,23);
                 queue.update(td);
                 queue.add(new TestDummy(15,30));
             }
