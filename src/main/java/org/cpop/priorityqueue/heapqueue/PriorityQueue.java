@@ -27,7 +27,7 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
     /**
      * Get the list of items contained by the heapqueue
      * Complexty: T(1)
-     * returns: a list of items (not sorted)
+     * @return List<T> A list of items (not sorted)
      */
     @Override
     public synchronized List<T> getItems() {
@@ -58,7 +58,7 @@ public class PriorityQueue<T extends Comparable> implements IPriorityQueue<T> {
     /**
      * Get the item with the most priority
      * Complexity: O(log2(n))because of the shiftDown method from the binary heap
-     * Returns: the item with the most priority or null if heapqueue is empty
+     * @return T The item with the most priority or null if heapqueue is empty
      */
     @Override
     public synchronized T pop() {
